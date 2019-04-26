@@ -1,7 +1,7 @@
 {
   "name": "atdownloader",
   "description": "Download anime from Anime Twist",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Rafael Julio <hello.rjulio@gmail.com>",
   "bin": {
     "atdownloader": "./bin/run"
@@ -25,6 +25,7 @@
     "@types/node": "^10.14.5",
     "@types/node-downloader-helper": "^1.0.0",
     "@types/puppeteer": "^1.12.3",
+    "rimraf": "^2.6.3",
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
     "typescript": "^3.4.5"
@@ -52,6 +53,6 @@
   "scripts": {
     "lint": "tslint -p . -t stylish",
     "build": "tsc -p .",
-    "prepack": "npm run build"
+    "prepack": "rimraf lib && npm run build"
   }
 }

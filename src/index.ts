@@ -5,6 +5,8 @@ import * as puppeteer from 'puppeteer'
 import * as tempy from 'tempy'
 import {createLogger, format, transports} from 'winston'
 
+const path = require('path')
+
 const Ora = require('ora')
 const {combine, label, timestamp, printf} = format
 
@@ -31,7 +33,7 @@ class Atdownloader extends Command {
     dest: flags.string({
       char: 'd',
       description: 'Destination folder',
-      default: process.env.HOME + '/Downloads'
+      default: path.join(process.env.HOME, 'Downloads')
     }),
     verbose: flags.boolean({
       char: 'v',
@@ -69,6 +71,7 @@ class Atdownloader extends Command {
 
     browser.close().catch(err => {
       logger.error(err)
+      this.exit(1)
     })
 
     return baseUrl + $('video').attr('src')
@@ -90,11 +93,11 @@ class Atdownloader extends Command {
       silent: !flags.verbose || false
     })
 
-    let dest: string = flags.dest || process.env.HOME + '/Downloads'
+    let dest: string = flags.dest || path.join(process.env.HOME, 'Downloads')
 
     if (!args.url.match(baseUrl)) {
-      logger.info('Invalid url. Exiting...')
-      this.exit(1)
+      logger.error('Invalid url. Exiting...')
+      this.exit(2)
     }
 
     const downloadLink = await this.getDownloadLink(args.url, flags.verbose)
@@ -107,15 +110,23 @@ class Atdownloader extends Command {
 
     logger.info('Download started.')
     spinner.start()
-    const dl = new DownloaderHelper(downloadLink, dest)
-    dl.on('progress', stats => {
-      spinner.text = 'Downloading: ' + byteHelper(stats.downloaded) + '/' + byteHelper(stats.total) + ' | ' + byteHelper(stats.speed) + '/s' + ' | ' + stats.progress.toFixed(1) + '%'
-    })
-    dl.on('error', err => logger.error(`Download failed: ${err}`))
-    dl.on('end', () => logger.info('Download completed.'))
-    dl.start().catch(err => {
-      logger.error(err)
-    })
+    const dl = new DownloaderHelper(downloadLink, dest, {override: true})
+
+    dl
+      .on('progress', stats => {
+        spinner.text = 'Downloading: ' + byteHelper(stats.downloaded) + '/' + byteHelper(stats.total) + ' | ' + byteHelper(stats.speed) + '/s' + ' | ' + stats.progress.toFixed(1) + '%'
+      })
+      .on('end', () => {
+        spinner.succeed('Download completed. Your file is located at: ' + dest)
+      })
+      .on('error', err => {
+        spinner.fail(`Download failed: ${err}`)
+      })
+
+    // This promise is already treated at the on('error') event.
+    // tslint:disable
+    dl.start()
+    // tslint:enable
   }
 }
 
