@@ -110,22 +110,23 @@ class Atdownloader extends Command {
 
     logger.info('Download started.')
     spinner.start()
-    const dl = new DownloaderHelper(downloadLink, dest)
-    dl.on('progress', stats => {
-      spinner.text = 'Downloading: ' + byteHelper(stats.downloaded) + '/' + byteHelper(stats.total) + ' | ' + byteHelper(stats.speed) + '/s' + ' | ' + stats.progress.toFixed(1) + '%'
-    })
-    dl.on('error', err => {
-      logger.error(`Download failed: ${err}`)
-      this.exit(3)
-    })
-    dl.on('end', () => {
-      logger.info('Download completed.')
-      this.exit(0)
-    })
-    dl.start().catch(err => {
-      logger.error(err)
-      this.exit(4)
-    })
+    const dl = new DownloaderHelper(downloadLink, dest, {override: true})
+
+    dl
+      .on('progress', stats => {
+        spinner.text = 'Downloading: ' + byteHelper(stats.downloaded) + '/' + byteHelper(stats.total) + ' | ' + byteHelper(stats.speed) + '/s' + ' | ' + stats.progress.toFixed(1) + '%'
+      })
+      .on('end', () => {
+        spinner.succeed('Download completed. Your file is located at: ' + dest)
+      })
+      .on('error', err => {
+        spinner.fail(`Download failed: ${err}`)
+      })
+
+    // This promise is already treated at the on('error') event.
+    // tslint:disable
+    dl.start()
+    // tslint:enable
   }
 }
 
