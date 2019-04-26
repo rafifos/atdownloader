@@ -1,0 +1,54 @@
+{
+  "name": "atdownloader",
+  "description": "Download anime from Anime Twist",
+  "version": "0.0.0",
+  "author": "Rafael Julio <hello.rjulio@gmail.com>",
+  "bin": {
+    "atdownloader": "./bin/run"
+  },
+  "bugs": "https://github.com/rafifos/atdownloader/issues",
+  "dependencies": {
+    "@oclif/command": "^1.5.13",
+    "@oclif/config": "^1.12.12",
+    "@oclif/plugin-help": "^2.1.6",
+    "cheerio": "^1.0.0-rc.3",
+    "node-downloader-helper": "^1.0.10",
+    "ora": "^3.4.0",
+    "puppeteer": "^1.15.0",
+    "tempy": "^0.3.0",
+    "tslib": "^1.9.3",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@oclif/tslint": "^3.1.1",
+    "@types/cheerio": "^0.22.11",
+    "@types/node": "^10.14.5",
+    "@types/node-downloader-helper": "^1.0.0",
+    "@types/puppeteer": "^1.12.3",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib"
+  ],
+  "homepage": "https://github.com/rafifos/atdownloader",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "bin": "atdownloader"
+  },
+  "repository": "rafifos/atdownloader",
+  "scripts": {
+    "lint": "tslint -p . -t stylish",
+    "prepack": "rm -rf lib && tsc -b"
+  },
+  "types": "lib/index.d.ts"
+}
