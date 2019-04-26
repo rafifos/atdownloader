@@ -5,6 +5,8 @@ import * as puppeteer from 'puppeteer'
 import * as tempy from 'tempy'
 import {createLogger, format, transports} from 'winston'
 
+const path = require('path')
+
 const Ora = require('ora')
 const {combine, label, timestamp, printf} = format
 
@@ -31,7 +33,7 @@ class Atdownloader extends Command {
     dest: flags.string({
       char: 'd',
       description: 'Destination folder',
-      default: process.env.HOME + '/Downloads'
+      default: path.join(process.env.HOME, 'Downloads')
     }),
     verbose: flags.boolean({
       char: 'v',
@@ -91,7 +93,7 @@ class Atdownloader extends Command {
       silent: !flags.verbose || false
     })
 
-    let dest: string = flags.dest || process.env.HOME + '/Downloads'
+    let dest: string = flags.dest || path.join(process.env.HOME, 'Downloads')
 
     if (!args.url.match(baseUrl)) {
       logger.error('Invalid url. Exiting...')
