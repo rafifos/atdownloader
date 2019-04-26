@@ -1,7 +1,7 @@
 {
   "name": "atdownloader",
   "description": "Download anime from Anime Twist",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Rafael Julio <hello.rjulio@gmail.com>",
   "bin": {
     "atdownloader": "./bin/run"
@@ -38,7 +38,10 @@
   ],
   "homepage": "https://github.com/rafifos/atdownloader",
   "keywords": [
-    "oclif"
+    "oclif",
+    "anime",
+    "downloader",
+    "anime-twist"
   ],
   "license": "MIT",
   "main": "lib/index.js",
@@ -48,7 +51,7 @@
   "repository": "rafifos/atdownloader",
   "scripts": {
     "lint": "tslint -p . -t stylish",
-    "prepack": "rm -rf lib && tsc -b"
-  },
-  "types": "lib/index.d.ts"
+    "build": "tsc -p .",
+    "prepack": "npm run build"
+  }
 }
