@@ -69,6 +69,7 @@ class Atdownloader extends Command {
 
     browser.close().catch(err => {
       logger.error(err)
+      this.exit(1)
     })
 
     return baseUrl + $('video').attr('src')
@@ -93,8 +94,8 @@ class Atdownloader extends Command {
     let dest: string = flags.dest || process.env.HOME + '/Downloads'
 
     if (!args.url.match(baseUrl)) {
-      logger.info('Invalid url. Exiting...')
-      this.exit(1)
+      logger.error('Invalid url. Exiting...')
+      this.exit(2)
     }
 
     const downloadLink = await this.getDownloadLink(args.url, flags.verbose)
@@ -111,10 +112,17 @@ class Atdownloader extends Command {
     dl.on('progress', stats => {
       spinner.text = 'Downloading: ' + byteHelper(stats.downloaded) + '/' + byteHelper(stats.total) + ' | ' + byteHelper(stats.speed) + '/s' + ' | ' + stats.progress.toFixed(1) + '%'
     })
-    dl.on('error', err => logger.error(`Download failed: ${err}`))
-    dl.on('end', () => logger.info('Download completed.'))
+    dl.on('error', err => {
+      logger.error(`Download failed: ${err}`)
+      this.exit(3)
+    })
+    dl.on('end', () => {
+      logger.info('Download completed.')
+      this.exit(0)
+    })
     dl.start().catch(err => {
       logger.error(err)
+      this.exit(4)
     })
   }
 }
