@@ -15,17 +15,17 @@ Download anime from [Anime Twist](https://twist.moe)
 
 `$ atdownloader URL`
 
-## Arguments and Options
+## Arguments and Flags
 
 ### Arguments
 
 | Argument | Type   | Description   |
 |----------|--------|---------------|
-| URL      | String | twist.moe URL |
+| URL      | string | twist.moe URL |
 
-### Options
+### Flags
 
-| Option               | Type    | Default Value         | Description                                               |
-|----------------------|---------|-----------------------|-----------------------------------------------------------|
-| -d, --dest=directory | String  | Your Downloads folder | Destination folder                                        |
-| -v, --verbose        | boolean | false                 | Whether or not to output additional information to stdout |
+| Flag                        | Type   | Default Value      | Description                                               |
+|-----------------------------|--------|--------------------|-----------------------------------------------------------|
+| -d, --destination=directory | string | $HOME/ATDownloader | Folder to download Anime into                             |
+| -v, --verbose               | bool   | false              | Whether or not to output additional information to stdout |
