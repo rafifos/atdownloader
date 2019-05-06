@@ -1,6 +1,5 @@
 import {Command, flags} from '@oclif/command'
 import * as cheerio from 'cheerio'
-import * as fs from 'fs'
 import * as makeDir from 'make-dir'
 import {DownloaderHelper} from 'node-downloader-helper'
 import * as os from 'os'
