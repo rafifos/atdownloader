@@ -13,7 +13,13 @@ describe('atdownloader', () => {
     .stdout()
     .do(() => cmd.run(['https://twist.moe/a/boku-no-pico/1']))
     .exit(0)
-    .it('downloads an anime')
+    .it('downloads a old anime')
+
+  test
+    .stdout()
+    .do(() => cmd.run(['https://twist.moe/a/mob-psycho-100-ii/1']))
+    .exit(0)
+    .it('downloads a new anime')
 
   /*
    * This contains an example of a test.
