@@ -1,7 +1,7 @@
 {
   "name": "atdownloader",
   "description": "Download anime from Anime Twist.",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "author": "Rafael Julio <hello.rjulio@gmail.com>",
   "bin": {
     "atdownloader": "./bin/run"
