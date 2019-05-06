@@ -134,7 +134,13 @@ class ATDownloader extends Command {
       this.exit(5)
     })
 
-    return (ATDownloader.baseUrl + $('video').attr('src')).replace(/ /g, '%20')
+    let downloadLink: string = $('video').attr('src').replace(/ /g, '%20')
+
+    if (downloadLink.indexOf('https') > -1) {
+      return downloadLink
+    } else {
+      return (ATDownloader.baseUrl + $('video').attr('src')).replace(/ /g, '%20')
+    }
   }
 }
 
