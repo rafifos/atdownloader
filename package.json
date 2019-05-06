@@ -1,6 +1,6 @@
 {
   "name": "atdownloader",
-  "description": "Download anime from Anime Twist",
+  "description": "Download anime from Anime Twist.",
   "version": "0.0.2",
   "author": "Rafael Julio <hello.rjulio@gmail.com>",
   "bin": {
@@ -12,6 +12,7 @@
     "@oclif/config": "^1.12.12",
     "@oclif/plugin-help": "^2.1.6",
     "cheerio": "^1.0.0-rc.3",
+    "make-dir": "^3.0.0",
     "node-downloader-helper": "^1.0.10",
     "ora": "^3.4.0",
     "puppeteer": "^1.15.0",
