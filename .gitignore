@@ -90,9 +90,12 @@ typings/
 # End of https://www.gitignore.io/api/node
 
 # Additional folders
-dist
-lib
-tmp
+dist/
+lib/
+tmp/
 
 # We use npm, sorry yarn folks.
 yarn.lock
+
+# TypeScript build info
+*.tsbuildinfo
