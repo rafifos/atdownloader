@@ -5,23 +5,13 @@ import {DownloaderHelper} from 'node-downloader-helper'
 import * as os from 'os'
 import * as path from 'path'
 import * as puppeteer from 'puppeteer'
-import * as winston from 'winston'
 
-// Must be declared globaly.
-const logger = winston.createLogger({
-  transports: [
-    new winston.transports.Console()
-  ],
-  format: winston.format.combine(
-    winston.format.label({label: 'atdownloader'}),
-    winston.format.timestamp(),
-    winston.format.printf(({level, message, label}) => {
-      return `[${label}] ${level}: ${message}`
-    })
-  )
-})
-
+// Must be declared globally
 const Ora = require('ora')
+
+const spinner = new Ora({
+  color: 'green'
+})
 
 class ATDownloader extends Command {
   static readonly args = [
@@ -43,10 +33,6 @@ class ATDownloader extends Command {
       char: 'd',
       description: 'Destination folder',
       default: ATDownloader.defaultDestination
-    }),
-    verbose: flags.boolean({
-      char: 'v',
-      default: false
     })
   }
 
@@ -54,30 +40,24 @@ class ATDownloader extends Command {
     let {args, flags} = this.parse(ATDownloader)
     let destination: string = flags.destination || ATDownloader.defaultDestination
 
-    if (flags.verbose) {
-      logger.silent = !flags.verbose || false
-    }
+    spinner.start()
 
+    spinner.text = 'Creating download directory'
     await makeDir(destination)
       .catch(err => {
-        logger.error(`An error ocurred when trying to create a directory: ${err}`)
+        spinner.fail(`An error ocurred when trying to create a directory: ${err}`)
         this.exit(3)
       })
 
+    spinner.text = 'Validating URL'
     if (!args.url.match(ATDownloader.baseUrl)) {
-      logger.error("URL isn't from Anime Twist, exiting.")
+      spinner.fail('Invalid URL, exiting.')
       this.exit(4)
     }
 
+    spinner.text = 'Finding direct download link'
     let downloadLink = await this.getDownloadLink(args.url)
-    logger.info(`Link found: ${downloadLink}`)
-
-    let spinner = new Ora({
-      text: 'Starting download...',
-      color: 'green'
-    })
-
-    spinner.start()
+    spinner.text = `Link found: ${downloadLink}`
 
     let oldFilename: string = downloadLink.substring(downloadLink.lastIndexOf('/') + 1)
     let newFilename: string = oldFilename.replace(/%20/g, ' ')
@@ -86,8 +66,9 @@ class ATDownloader extends Command {
 
     // tslint:disable-next-line: no-floating-promises
     dl
+      .on('start', () => { spinner.text = 'Downloading' })
       .on('end', () => {
-        spinner.succeed('Download completed.')
+        spinner.succeed(`Download completed. Anime is located at: ${path.join(destination, newFilename)}`)
       })
       .on('error', err => {
         spinner.fail(`Download failed: ${err}`)
@@ -130,7 +111,7 @@ class ATDownloader extends Command {
      * cheerio.
      */
     browser.close().catch(err => {
-      logger.error('There was an error on the scraping process: ', err)
+      spinner.fail(`Couldn't find a direct download link: ${err}`)
       this.exit(5)
     })
 
