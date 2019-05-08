@@ -1,13 +1,24 @@
 language: node_js
-node_js:
-  - node
 
 cache: npm
 
+git:
+  depth: 1
+  quiet: true
+
 script:
-  - ./bin/run --help
   - npm run test
 
-after_success:
+after-sucess:
   - ./node_modules/.bin/nyc report --reporter text-lcov > coverage.lcov
   - curl -s https://codecov.io/bash | bash
+
+jobs:
+  include:
+    - stage: release
+      node_js: lts/*
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npx semantic-release

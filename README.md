@@ -3,6 +3,7 @@
 Download anime from [Anime Twist](https://twist.moe)
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Codecov](https://codecov.io/gh/rafifos/atdownloader/branch/master/graph/badge.svg)](https://codecov.io/gh/rafifos/atdownloader)
 [![DeepScan grade](https://deepscan.io/api/teams/3511/projects/5364/branches/41166/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=3511&pid=5364&bid=41166)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/rafifos/atdownloader.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/rafifos/atdownloader/context:javascript)
