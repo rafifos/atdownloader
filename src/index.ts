@@ -81,9 +81,9 @@ class ATDownloader extends Command {
   }
 
   /*
-  * Function created by hgouveia, modified by rafifos.
-  * The original source code can be found at: https://github.com/hgouveia/node-downloader-helper/blob/0b3f2e42d72bdc24ab0889a8954161d239659fb6/example/helpers.js#L4
-  */
+   * Function created by hgouveia, modified by rafifos.
+   * The original source code can be found at: https://github.com/hgouveia/node-downloader-helper/blob/0b3f2e42d72bdc24ab0889a8954161d239659fb6/example/helpers.js#L4
+   */
   byteHelper(value: number): string {
     // https://gist.github.com/thomseddon/3511330
     let units = ['b', 'kB', 'MB', 'GB', 'TB']
