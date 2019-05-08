@@ -15,9 +15,7 @@
     "make-dir": "^3.0.0",
     "node-downloader-helper": "^1.0.10",
     "ora": "^3.4.0",
-    "puppeteer": "^1.15.0",
-    "tempy": "^0.3.0",
-    "tslib": "^1.9.3"
+    "puppeteer": "^1.15.0"
   },
   "devDependencies": {
     "@oclif/test": "^1.2.4",
@@ -40,6 +38,7 @@
     "rimraf": "^2.6.3",
     "semantic-release": "^15.13.3",
     "ts-node": "^8.1.0",
+    "tslib": "^1.9.3",
     "tslint": "^5.16.0",
     "typescript": "^3.4.5"
   },
