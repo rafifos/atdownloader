@@ -11,6 +11,7 @@
     "@oclif/command": "^1.5.13",
     "@oclif/config": "^1.12.12",
     "@oclif/plugin-help": "^2.1.6",
+    "@oclif/plugin-warn-if-update-available": "^1.7.0",
     "cheerio": "^1.0.0-rc.3",
     "make-dir": "^3.0.0",
     "node-downloader-helper": "^1.0.10",
@@ -59,7 +60,14 @@
   "license": "MIT",
   "main": "lib/index.js",
   "oclif": {
-    "bin": "atdownloader"
+    "bin": "atdownloader",
+    "plugins": [
+      "@oclif/plugin-warn-if-update-available"
+    ],
+    "warn-if-update-available": {
+      "timeoutInDays": 7,
+      "message": "<%= config.name %> update available from <%= chalk.greenBright(config.version) %> to <%= chalk.greenBright(latest) %>."
+    }
   },
   "repository": "rafifos/atdownloader",
   "scripts": {
