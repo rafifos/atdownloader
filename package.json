@@ -16,7 +16,7 @@
     "make-dir": "^3.0.0",
     "node-downloader-helper": "^1.0.10",
     "ora": "^3.4.0",
-    "puppeteer": "^1.15.0"
+    "puppeteer": "^1.16.0"
   },
   "devDependencies": {
     "@oclif/test": "^1.2.4",
