@@ -59,16 +59,15 @@ class ATDownloader extends Command {
     let downloadLink = await this.getDownloadLink(args.url)
     spinner.text = `Link found: ${downloadLink}`
 
-    let oldFilename: string = downloadLink.substring(downloadLink.lastIndexOf('/') + 1)
-    let newFilename: string = oldFilename.replace(/%20/g, ' ')
+    let filename: string = downloadLink.substring(downloadLink.lastIndexOf('/') + 1).replace(/%20/g, ' ')
 
-    let dl = new DownloaderHelper(downloadLink, destination, {fileName: newFilename, override: true})
+    let dl = new DownloaderHelper(downloadLink, destination, {fileName: filename, override: true})
 
     // tslint:disable-next-line: no-floating-promises
     dl
       .on('start', () => { spinner.text = 'Downloading' })
       .on('end', () => {
-        spinner.succeed(`Download completed. Anime is located at: ${path.join(destination, newFilename)}`)
+        spinner.succeed(`Download completed. Anime is located at: ${path.join(destination, filename)}`)
       })
       .on('error', err => {
         spinner.fail(`Download failed: ${err}`)
