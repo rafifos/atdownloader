@@ -22,7 +22,7 @@
     "@oclif/test": "^1.2.4",
     "@oclif/tslint": "^3.1.1",
     "@semantic-release/changelog": "^3.0.4",
-    "@semantic-release/commit-analyzer": "^6.1.0",
+    "@semantic-release/commit-analyzer": "^6.2.0",
     "@semantic-release/git": "^7.0.12",
     "@semantic-release/github": "^5.2.10",
     "@semantic-release/npm": "^5.1.9",
