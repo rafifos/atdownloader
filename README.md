@@ -13,6 +13,7 @@ Download anime from [Anime Twist](https://twist.moe)
 [![Version](https://img.shields.io/npm/v/atdownloader.svg)](https://npmjs.org/package/atdownloader)
 [![Downloads/week](https://img.shields.io/npm/dw/atdownloader.svg)](https://npmjs.org/package/atdownloader)
 [![License](https://img.shields.io/npm/l/atdownloader.svg)](https://github.com/rafifos/atdownloader/blob/master/package.json)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frafifos%2Fatdownloader.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frafifos%2Fatdownloader?ref=badge_shield)
 
 ## Usage
 
@@ -31,3 +32,7 @@ Download anime from [Anime Twist](https://twist.moe)
 | Flag                        | Type   | Default Value      | Description                                               |
 |-----------------------------|--------|--------------------|-----------------------------------------------------------|
 | -d, --destination=directory | string | $HOME/ATDownloader | Folder to download Anime into                             |
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frafifos%2Fatdownloader.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Frafifos%2Fatdownloader?ref=badge_large)
