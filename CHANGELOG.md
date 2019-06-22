@@ -1,3 +1,20 @@
+# [2.0.0](https://github.com/rafifos/atdownloader/compare/1.1.0...2.0.0) (2019-06-22)
+
+
+### Code Refactoring
+
+* replace node-downloader-helper with downit ([58fd084](https://github.com/rafifos/atdownloader/commit/58fd084))
+
+
+### Features
+
+* gracefully throw a error (when there is one) ([1e7c1fb](https://github.com/rafifos/atdownloader/commit/1e7c1fb))
+
+
+### BREAKING CHANGES
+
+* Replace the download engine, atm it can't show the current download speed.
+
 # [1.1.0](https://github.com/rafifos/atdownloader/compare/1.0.0...1.1.0) (2019-05-08)
 
 
