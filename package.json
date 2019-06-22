@@ -13,8 +13,8 @@
     "@oclif/plugin-help": "^2.2.0",
     "@oclif/plugin-warn-if-update-available": "^1.7.0",
     "cheerio": "^1.0.0-rc.3",
+    "downit": "^2.0.0",
     "make-dir": "^3.0.0",
-    "node-downloader-helper": "^1.0.10",
     "ora": "^3.4.0",
     "pretty-error": "^2.1.1",
     "puppeteer": "^1.17.0"

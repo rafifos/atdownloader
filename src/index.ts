@@ -3,12 +3,11 @@ require('pretty-error').start()
 import {Command, flags} from '@oclif/command'
 import * as cheerio from 'cheerio'
 import * as makeDir from 'make-dir'
-import {DownloaderHelper} from 'node-downloader-helper'
 import * as os from 'os'
 import * as path from 'path'
 import * as puppeteer from 'puppeteer'
 
-// Must be declared globally
+const downit = require('downit')
 const Ora = require('ora')
 
 const spinner = new Ora({
@@ -63,22 +62,18 @@ class ATDownloader extends Command {
 
     let filename: string = downloadLink.substring(downloadLink.lastIndexOf('/') + 1).replace(/%20/g, ' ')
 
-    let dl = new DownloaderHelper(downloadLink, destination, {fileName: filename, override: true})
-
-    // tslint:disable-next-line: no-floating-promises
-    dl
-      .on('start', () => { spinner.text = 'Downloading' })
-      .on('end', () => {
-        spinner.succeed(`Download completed. Anime is located at: ${path.join(destination, filename)}`)
-      })
-      .on('error', err => {
+    spinner.text = 'Downloading'
+    downit(downloadLink, destination + '/' + filename, {
+      onprogress: (progress: number, size: number) => {
+        let percent: string = (progress / size * 100).toFixed(1)
+        spinner.text = `Downloading: ${this.byteHelper(progress)} / ${this.byteHelper(size)} | ${percent}%`
+      }
+    })
+      .then(() => spinner.succeed(`Download completed. Your file is located at: ${path.join(destination, filename)}`))
+      .catch((err: any) => {
         spinner.fail(`Download failed: ${err}`)
         this.exit()
       })
-      .on('progress', stats => {
-        spinner.text = 'Downloading: ' + this.byteHelper(stats.downloaded) + '/' + this.byteHelper(stats.total) + ' | ' + this.byteHelper(stats.speed) + '/s' + ' | ' + stats.progress.toFixed(1) + '%'
-      })
-      .start()
   }
 
   /*
