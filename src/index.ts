@@ -46,13 +46,13 @@ class ATDownloader extends Command {
     await makeDir(destination)
       .catch(err => {
         spinner.fail(`An error ocurred when trying to create a directory: ${err}`)
-        this.exit(3)
+        this.exit()
       })
 
     spinner.text = 'Validating URL'
     if (!args.url.match(ATDownloader.baseUrl)) {
       spinner.fail('Invalid URL, exiting.')
-      this.exit(4)
+      this.exit()
     }
 
     spinner.text = 'Finding direct download link'
@@ -71,7 +71,7 @@ class ATDownloader extends Command {
       })
       .on('error', err => {
         spinner.fail(`Download failed: ${err}`)
-        this.exit(6)
+        this.exit()
       })
       .on('progress', stats => {
         spinner.text = 'Downloading: ' + this.byteHelper(stats.downloaded) + '/' + this.byteHelper(stats.total) + ' | ' + this.byteHelper(stats.speed) + '/s' + ' | ' + stats.progress.toFixed(1) + '%'
@@ -111,7 +111,7 @@ class ATDownloader extends Command {
      */
     browser.close().catch(err => {
       spinner.fail(`Couldn't find a direct download link: ${err}`)
-      this.exit(5)
+      this.exit()
     })
 
     let downloadLink: string = $('video').attr('src').replace(/ /g, '%20')
