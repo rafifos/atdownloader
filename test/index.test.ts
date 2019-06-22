@@ -6,7 +6,7 @@ describe('atdownloader', () => {
   test
     .stdout()
     .do(() => cmd.run(['https://dogemuchwow.com/wp-content/uploads/2017/11/web-developer-doge.jpg']))
-    .exit(4)
+    .exit()
     .it('runs with invalid url')
 
   /*
