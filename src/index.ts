@@ -1,3 +1,5 @@
+require('pretty-error').start()
+
 import {Command, flags} from '@oclif/command'
 import * as cheerio from 'cheerio'
 import * as makeDir from 'make-dir'
