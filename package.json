@@ -17,7 +17,7 @@
     "make-dir": "^3.0.0",
     "ora": "^3.4.0",
     "pretty-error": "^2.1.1",
-    "puppeteer": "^1.18.1"
+    "puppeteer": "^1.19.0"
   },
   "devDependencies": {
     "@oclif/test": "^1.2.4",
