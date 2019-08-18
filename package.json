@@ -10,7 +10,7 @@
   "dependencies": {
     "@oclif/command": "^1.5.18",
     "@oclif/config": "^1.13.2",
-    "@oclif/plugin-help": "^2.2.0",
+    "@oclif/plugin-help": "2.2.1",
     "@oclif/plugin-warn-if-update-available": "^1.7.0",
     "cheerio": "^1.0.0-rc.3",
     "downit": "^2.0.0",
