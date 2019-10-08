@@ -94,8 +94,9 @@ dist/
 lib/
 tmp/
 
-# We use npm, sorry yarn folks.
+# npm and yarn lockfiles
 yarn.lock
+package-lock.json
 
 # TypeScript build info
 *.tsbuildinfo
