@@ -1,6 +1,6 @@
 {
   "name": "atdownloader",
-  "description": "Download anime from Anime Twist.",
+  "description": "Downloader for Anime Twist.",
   "version": "2.0.0",
   "author": "Rafael Julio <hello.rjulio@gmail.com>",
   "bin": {
@@ -8,72 +8,61 @@
   },
   "bugs": "https://github.com/rafifos/atdownloader/issues",
   "dependencies": {
-    "@oclif/command": "^1.5.18",
-    "@oclif/config": "1.13.3",
-    "@oclif/plugin-help": "2.2.1",
-    "@oclif/plugin-warn-if-update-available": "^1.7.0",
-    "cheerio": "^1.0.0-rc.3",
-    "downit": "^2.0.0",
-    "make-dir": "^3.0.0",
-    "ora": "^4.0.2",
-    "pretty-error": "^2.1.1",
-    "puppeteer": "^1.19.0"
+    "@oclif/command": "^1",
+    "@oclif/config": "^1",
+    "@oclif/plugin-help": "^2",
+    "tslib": "^1"
   },
   "devDependencies": {
-    "@oclif/test": "^1.2.5",
-    "@oclif/tslint": "^3.1.1",
-    "@semantic-release/changelog": "^3.0.4",
-    "@semantic-release/commit-analyzer": "^6.3.0",
-    "@semantic-release/git": "^7.0.16",
-    "@semantic-release/github": "^5.4.2",
-    "@semantic-release/npm": "^5.1.13",
-    "@semantic-release/release-notes-generator": "^7.3.0",
-    "@types/chai": "^4.2.0",
-    "@types/cheerio": "^0.22.13",
-    "@types/mocha": "^5.2.7",
-    "@types/node": "^12.7.1",
-    "@types/puppeteer": "^1.19.0",
-    "chai": "^4.2.0",
-    "mocha": "^6.2.0",
-    "nyc": "^14.1.1",
-    "rimraf": "^3.0.0",
-    "semantic-release": "^15.13.19",
-    "ts-node": "^8.3.0",
-    "tslib": "^1.10.0",
-    "tslint": "^5.18.0",
-    "typescript": "^3.5.3"
+    "@oclif/dev-cli": "^1",
+    "@oclif/test": "^1",
+    "@types/chai": "^4",
+    "@types/mocha": "^5",
+    "@types/node": "^10",
+    "chai": "^4",
+    "eslint": "^5.13",
+    "eslint-config-oclif": "^3.1",
+    "eslint-config-oclif-typescript": "^0.1",
+    "globby": "^10",
+    "mocha": "^5",
+    "nyc": "^14",
+    "semantic-release": "^15.14.0",
+    "ts-node": "^8",
+    "typescript": "^3.3"
   },
   "engines": {
     "node": ">=8.0.0"
   },
   "files": [
     "/bin",
-    "/lib"
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
   ],
   "homepage": "https://github.com/rafifos/atdownloader",
   "keywords": [
     "oclif",
     "anime",
-    "downloader",
-    "anime-twist"
+    "anime-twist",
+    "downloader"
   ],
   "license": "MIT",
   "main": "lib/index.js",
   "oclif": {
+    "commands": "./lib/commands",
     "bin": "atdownloader",
     "plugins": [
-      "@oclif/plugin-warn-if-update-available"
-    ],
-    "warn-if-update-available": {
-      "timeoutInDays": 7,
-      "message": "<%= config.name %> update available from <%= chalk.greenBright(config.version) %> to <%= chalk.greenBright(latest) %>."
-    }
+      "@oclif/plugin-help"
+    ]
   },
   "repository": "rafifos/atdownloader",
   "scripts": {
-    "posttest": "tslint -p test -t stylish",
-    "prepack": "rimraf lib && tsc -b",
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "semantic-release": "semantic-release",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "semantic-release": "semantic-release"
-  }
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts"
 }

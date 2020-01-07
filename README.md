@@ -1,37 +1,71 @@
-# atdownloader
+atdownloader
+============
 
-Download anime from [Anime Twist](https://twist.moe)
+Downloader for Anime Twist
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-[![Codecov](https://codecov.io/gh/rafifos/atdownloader/branch/master/graph/badge.svg)](https://codecov.io/gh/rafifos/atdownloader)
-[![DeepScan grade](https://deepscan.io/api/teams/3511/projects/5364/branches/41166/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=3511&pid=5364&bid=41166)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/rafifos/atdownloader.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/rafifos/atdownloader/context:javascript)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/rafifos/atdownloader.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/rafifos/atdownloader/alerts/)
-[![Depfu](https://badges.depfu.com/badges/252d393ce0e2285a438c0ad1bf0a8eda/count.svg)](https://depfu.com/github/rafifos/atdownloader?project_id=7755)
 [![Version](https://img.shields.io/npm/v/atdownloader.svg)](https://npmjs.org/package/atdownloader)
+[![Codecov](https://codecov.io/gh/rafifos/atdownloader/branch/master/graph/badge.svg)](https://codecov.io/gh/rafifos/atdownloader)
 [![Downloads/week](https://img.shields.io/npm/dw/atdownloader.svg)](https://npmjs.org/package/atdownloader)
 [![License](https://img.shields.io/npm/l/atdownloader.svg)](https://github.com/rafifos/atdownloader/blob/master/package.json)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frafifos%2Fatdownloader.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frafifos%2Fatdownloader?ref=badge_shield)
 
-## Usage
+<!-- toc -->
+* [Usage](#usage)
+* [Commands](#commands)
+<!-- tocstop -->
+# Usage
+<!-- usage -->
+```sh-session
+$ npm install -g atdownloader
+$ atdownloader COMMAND
+running command...
+$ atdownloader (-v|--version|version)
+atdownloader/2.0.0 darwin-x64 node-v12.14.0
+$ atdownloader --help [COMMAND]
+USAGE
+  $ atdownloader COMMAND
+...
+```
+<!-- usagestop -->
+# Commands
+<!-- commands -->
+* [`atdownloader hello [FILE]`](#atdownloader-hello-file)
+* [`atdownloader help [COMMAND]`](#atdownloader-help-command)
 
-`$ atdownloader URL`
+## `atdownloader hello [FILE]`
 
-## Arguments and Flags
+describe the command here
 
-### Arguments
+```
+USAGE
+  $ atdownloader hello [FILE]
 
-| Argument | Type   | Description   |
-|----------|--------|---------------|
-| URL      | string | twist.moe URL |
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
 
-### Flags
+EXAMPLE
+  $ atdownloader hello
+  hello world from ./src/hello.ts!
+```
 
-| Flag                        | Type   | Default Value      | Description                                               |
-|-----------------------------|--------|--------------------|-----------------------------------------------------------|
-| -d, --destination=directory | string | $HOME/ATDownloader | Folder to download Anime into                             |
+_See code: [src/commands/hello.ts](https://github.com/rafifos/atdownloader/blob/v2.0.0/src/commands/hello.ts)_
 
-## License
+## `atdownloader help [COMMAND]`
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frafifos%2Fatdownloader.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Frafifos%2Fatdownloader?ref=badge_large)
+display help for atdownloader
+
+```
+USAGE
+  $ atdownloader help [COMMAND]
+
+ARGUMENTS
+  COMMAND  command to show help for
+
+OPTIONS
+  --all  see all commands in CLI
+```
+
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.3/src/commands/help.ts)_
+<!-- commandsstop -->
